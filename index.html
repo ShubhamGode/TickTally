@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="background-lines">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container">
+      <div class="logo">
+        <img src="TickTally_Img.png" alt="TickTally Logo" />
+        <h1 class="brand">TickTally</h1>
+      </div>
+      <h2>Select Your Tracker</h2>
+      <p class="subtitle">
+        Track your daily activities efficiently by choosing the mode that fits
+        your needs.
+      </p>
+
+      <div class="card" onclick="goToAmount()">
+        <h3><i class="fa-solid fa-list"></i> Qty Tracker</h3>
+        <p>Track activities based on quantity or count.</p>
+      </div>
+
+      <div class="card" onclick="goToTime()">
+        <h3><i class="fa-solid fa-clock"></i> Time Tracker</h3>
+        <p>Monitor how much time you spend on tasks.</p>
+      </div>
+    </div>
+
+    <script>
+      function goToAmount() {
+        window.location.href = "Amount.html";
+      }
+
+      function goToTime() {
+        window.location.href = "Time.html";
+      }
+    </script>
+  </body>
+</html>

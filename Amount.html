@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Task Pie Chart</title>
+    <link rel="styleSheet" href="Amount.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  </head>
+
+  <body>
+    <div class="layout">
+      <div class="container">
+        <h2>Work Progress</h2>
+
+        <div class="input-group">
+          <label for="totalTasks">How much is your total ?</label>
+          <input type="number" id="totalTasks" placeholder="e.g., 5" />
+          <button onclick="startTasks()">Begin Setup</button>
+        </div>
+
+        <div id="taskSection"></div>
+
+        <button class="secondary" onclick="generateChart()">
+          Visualize Progress
+        </button>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="pieChart" width="400" height="400"></canvas>
+        <button
+          class="secondary"
+          id="DownloadBtn"
+          style="display: none"
+          onclick="downloadChart()"
+        >
+          Download Chart
+        </button>
+      </div>
+    </div>
+    <div class="bottom-btn">
+      <button onclick="goTime()">← Switch to Time Tracker</button>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <script src="main.js"></script>
+  </body>
+</html>
