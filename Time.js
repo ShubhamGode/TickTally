@@ -105,16 +105,20 @@ function saveTask() {
   let endMin = eh * 60 + em;
 
   if (endMin <= startMin) {
-    Swal.fire({
-      icon: "warning",
-      title: "End time",
-      html: `End time must be greater than start time`,
-      customClass: {
-        popup: "my-swal",
-      },
-    });
-    return;
-  }
+    if (startMin >= 12 * 60) {
+      endMin += 1440;
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Time",
+        html: `End time cannot be earlier than start time`,
+        customClass: {
+          popup: "my-swal",
+        },
+      });
+      return;
+    }
+  }  
 
   let value = endMin - startMin;
 
@@ -172,7 +176,7 @@ function generateChart() {
 
   const ctx = document.getElementById("pieChart").getContext("2d");
 
-  chart = new Chart(ctx, {
+ chart = new Chart(ctx, {
     type: "pie",
     data: {
       labels: taskNames,
@@ -190,6 +194,17 @@ function generateChart() {
             color: "#ffffff",
           },
         },
+
+        // ✅ Add this block
+        datalabels: {
+          color: "#fff",
+          formatter: (value, context) => {
+            let total = context.dataset.data.reduce((a, b) => a + b, 0);
+            let percent = ((value / total) * 100).toFixed(1);
+            return percent + "%";
+          },
+        },
+
         tooltip: {
           backgroundColor: "#020617",
           titleColor: "#ffffff",
@@ -211,6 +226,9 @@ function generateChart() {
         },
       },
     },
+
+    // ✅ Important
+    plugins: [ChartDataLabels],
   });
 }
 
