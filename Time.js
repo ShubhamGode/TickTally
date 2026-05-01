@@ -31,7 +31,7 @@ function startTasks() {
     return;
   }
 
-  totalTasks = 5;
+  totalTasks = 24;
 
   let totalHours = parseInt(document.getElementById("totalHours").value) || 0;
   maxTotal = totalHours * 60;
@@ -104,6 +104,20 @@ function saveTask() {
   let startMin = sh * 60 + sm;
   let endMin = eh * 60 + em;
 
+  //26April2026 Shubham Changed logic for cross midnight time comparision
+
+  // if (endMin <= startMin) {
+  //   Swal.fire({
+  //     icon: "warning",
+  //     title: "End time",
+  //     html: `End time must be greater than start time`,
+  //     customClass: {
+  //       popup: "my-swal",
+  //     },
+  //   });
+  //   return;
+  // }
+  // Case: End time is smaller (possible next-day)
   if (endMin <= startMin) {
     if (startMin >= 12 * 60) {
       endMin += 1440;
@@ -118,8 +132,7 @@ function saveTask() {
       });
       return;
     }
-  }  
-
+  }
   let value = endMin - startMin;
 
   if (currentTotal + value > maxTotal) {
@@ -176,7 +189,7 @@ function generateChart() {
 
   const ctx = document.getElementById("pieChart").getContext("2d");
 
- chart = new Chart(ctx, {
+  chart = new Chart(ctx, {
     type: "pie",
     data: {
       labels: taskNames,
