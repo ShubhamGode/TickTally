@@ -10,15 +10,19 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px 0;
   font-family: "Outfit", sans-serif;
+  /* background: radial-gradient(circle at top right, #1e293b, #0f172a); */
   background: radial-gradient(circle at top right, #1e293b, #0f172a);
   color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  display: block; /* remove flex */
+  padding: 20px 0;
+  /* justify-content: center;
+  align-items: center; */
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
 }
 
 body::before {
@@ -27,7 +31,7 @@ body::before {
   width: 300px;
   height: 300px;
   background: var(--accent);
-  filter: blur(120px);
+  filter: blur(80px);
   z-index: -1;
   top: 10%;
   left: 10%;
@@ -40,7 +44,7 @@ body::before {
   gap: 30px;
   width: 90%;
   max-width: 1100px;
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: var(--glass);
   border-radius: 24px;
@@ -129,10 +133,23 @@ button.secondary:hover {
   border: 1px solid var(--glass-border);
 }
 
+@media (max-width: 2200px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
     padding: 20px;
+    display: block;
+    width: 86%;
+  }
+  body {
+    display: block;
   }
 }
 
@@ -148,7 +165,8 @@ button.secondary:hover {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-
+  width: auto;
+  max-width: 90%;
   background: linear-gradient(135deg, #0b3a0c, #4b6e43);
   color: rgb(186, 239, 194);
   font-size: 15px;
@@ -167,4 +185,33 @@ button.secondary:hover {
   border: 1px solid rgba(168, 85, 247, 0.3);
   border-radius: 14px;
   box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+}
+button:active {
+  transform: scale(0.97);
+}
+@media (max-width: 768px) {
+  .bottom-btn {
+    position: static;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .layout {
+    gap: 12px;
+    padding: 15px;
+    width: 90%;
+    backdrop-filter: blur(8px);
+  }
+  input {
+    padding: 16px;
+    font-size: 1.05rem;
+  }
+  .container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  input[type="number"],
+  input[type="text"] {
+    width: 95%;
+  }
 }
