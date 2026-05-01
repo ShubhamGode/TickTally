@@ -13,7 +13,7 @@ body {
   font-family: "Inter", system-ui, sans-serif;
   background: radial-gradient(circle at top, #1e293b, #020617);
   color: var(--text);
-  display: flex;
+  display: block;
   justify-content: center;
   padding: 40px 20px;
 }
@@ -138,24 +138,48 @@ button.secondary:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 canvas {
   max-width: 100%;
+}
+@media (max-width: 2200px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
   }
+  .bottom-btn {
+    position: static;
+    margin-top: 20px;
+  }
+  .bottom-btn button {
+    width: 90%;
+  }
 }
-
+@media (max-width: 480px) {
+  .container,
+  .chart-container {
+    padding: 1.2rem;
+  }
+}
 .time-picker {
   display: flex;
   gap: 12px;
   margin-top: 10px;
 }
-
+input,
+select {
+  padding: 14px;
+  font-size: 1rem;
+}
 .time-box {
   flex: 1;
   display: flex;
@@ -215,7 +239,7 @@ select:focus {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  width: 20%;
+  width: auto;
   background: linear-gradient(135deg, #410707, #64261f);
   color: rgb(255, 192, 213);
   font-size: 15px;
