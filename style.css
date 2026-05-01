@@ -1,11 +1,12 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Segoe UI", Arial, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   background: #020617;
 }
@@ -26,7 +27,8 @@ body {
     rgba(56, 189, 248, 0.3),
     transparent
   );
-  animation: flow 6s linear infinite;
+  animation: flow 8s linear infinite;
+  opacity: 0.4;
 }
 
 .background-lines span:nth-child(1) {
@@ -57,7 +59,8 @@ body {
 }
 
 .container {
-  width: 420px;
+  width: 90%;
+  max-width: 420px;
   padding: 40px 30px;
   text-align: center;
 
@@ -143,7 +146,9 @@ h2 {
   text-align: center;
   margin-bottom: 15px;
 }
-
+.card:active {
+  transform: scale(0.98);
+}
 .logo img {
   width: 140px;
   height: auto;
@@ -158,4 +163,17 @@ h2 {
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 1px;
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .brand {
+    font-size: 22px;
+  }
 }
